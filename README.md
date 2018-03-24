@@ -9,7 +9,7 @@ Also, please refer to the Pytorch tutorial on Reinforcement Learning:
 
 http://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html
 
-Most of the game code and test code are copied from this website. What I do is to use Pytorch rather than Keras to implemet the neural network. Also, I have made some changes to make the code more "Pythonic". For instance, I replace the for loop in the experience replay to the vector calculation. This modification can speed up the running by parallel processing.
+Most of the game code and test code are copied from the game website. What I do is to use Pytorch rather than Keras to implemet the neural network of Q learning. Also, I have made some changes to make the code more "Pythonic". For instance, I replace the for loop in the experience replay to the vector calculation. This modification can speed up the running by parallel processing.
 
 If you are interested in using Pytorch to create some programs, this game can be a good practice.
 
