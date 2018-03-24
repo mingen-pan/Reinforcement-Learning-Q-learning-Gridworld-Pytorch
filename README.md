@@ -15,3 +15,42 @@ If you are interested in using Pytorch to create some programs, this game can be
 
 
 Simply run the `main.py`. The program will train the network and test it. The implementation of game is at `gridworld.py` and the implementation of Q learning is at `DQN.py`. Both of them have been imported into `main.py` already.
+
+Here is the result after traning 1000 epoches.
+```
+Initial State:
+
+[[' ' ' ' ' ' ' ']
+ [' ' '-' '+' ' ']
+ [' ' ' ' 'W' ' ']
+ [' ' ' ' ' ' 'P']]
+Variable containing:
+ 6.2493  4.8025  3.9134  4.7186
+[torch.FloatTensor of size 1x4]
+
+Move #: 0; Taking action: 0
+[[' ' ' ' ' ' ' ']
+ [' ' '-' '+' ' ']
+ [' ' ' ' 'W' 'P']
+ [' ' ' ' ' ' ' ']]
+Variable containing:
+ 8.0619  4.3604  6.7725  6.0888
+[torch.FloatTensor of size 1x4]
+
+Move #: 1; Taking action: 0
+[[' ' ' ' ' ' ' ']
+ [' ' '-' '+' 'P']
+ [' ' ' ' 'W' ' ']
+ [' ' ' ' ' ' ' ']]
+Variable containing:
+  7.0695   5.9213  10.5555   7.7655
+[torch.FloatTensor of size 1x4]
+
+Move #: 2; Taking action: 2
+[[' ' ' ' ' ' ' ']
+ [' ' '-' ' ' ' ']
+ [' ' ' ' 'W' ' ']
+ [' ' ' ' ' ' ' ']]
+Reward: 10
+
+```
