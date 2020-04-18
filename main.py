@@ -46,7 +46,7 @@ for i in range(epochs):
         batch = Transition(*zip(*transitions))
         state_batch = Variable(torch.cat(batch.state))
         action_batch = Variable(torch.LongTensor(batch.action)).view(-1,1)
-        new_state_batch = Variable(torch.cat(batch.new_state), volatile = True)
+        new_state_batch = Variable(torch.cat(batch.new_state))
         reward_batch = Variable(torch.FloatTensor(batch.reward))
         non_final_mask = (reward_batch == -1)
         #Let's run our Q function on S to get Q values for all possible actions
@@ -54,7 +54,8 @@ for i in range(epochs):
         # we only grad descent on the qval[action], leaving qval[not action] unchanged
         state_action_values = qval_batch.gather(1, action_batch)
         #Get max_Q(S',a)
-        newQ = model(new_state_batch)
+        with torch.no_grad():
+            newQ = model(new_state_batch)
         maxQ = newQ.max(1)[0]
 #         if reward == -1: #non-terminal state
 #             update = (reward + (gamma * maxQ))
@@ -63,7 +64,6 @@ for i in range(epochs):
 #         y = reward_batch + (reward_batch == -1).float() * gamma *maxQ
         y = reward_batch
         y[non_final_mask] += gamma * maxQ[non_final_mask]
-        y.volatile = False
         print("Game #: %s" % (i,), end='\r')
         loss = criterion(state_action_values, y)
         # Optimize the model
